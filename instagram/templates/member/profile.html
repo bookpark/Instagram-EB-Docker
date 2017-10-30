@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <div class="btn-container">
+            {% if not request.user == target_user %}
+                <form action="{% url 'member:follow_toggle' user_pk=target_user.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-default" aria-label="Left Align">
+                        <span
+                                class="glyphicon
+                                {% if target_user in user.following_users.all %}
+                                    glyphicon-star
+                                {% else %}
+                                    glyphicon-star-empty
+                                {% endif %}"
+                                aria-hidden="true">
+                        </span>
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <div>
+        <p>팔로워</p>
+        {% if target_user.followers.exists %}
+            {% for user in target_user.followers.all %}
+                {{ user.username }}
+            {% endfor %}
+        {% else %}
+            <p>팔로우 하는 유저가 없습니다.</p>
+        {% endif %}
+    </div>
+    <div>
+        <p>팔로잉</p>
+        {% if target_user.following_users.exists %}
+            {% for user in target_user.following_users.all %}
+                {{ user.username }}
+            {% endfor %}
+        {% else %}
+            <p>팔로우 중인 유저가 없습니다.</p>
+        {% endif %}
+    </div>
+    <div>
+        {% if target_user.img_profile %}
+            <img src="{{ target_user.img_profile.url }}" alt="">
+        {% else %}
+            <img src="">
+        {% endif %}
+    </div>
+    <div>
+        {{ target_user.nickname }}
+    </div>
+    <div class="panel-body">
+        {% for post in target_user.post_set.all %}
+            <img src="{{ post.photo.url }}" class="img-post">
+        {% endfor %}
+    </div>
+{% endblock %}

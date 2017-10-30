@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for post in posts %}
+        {% include 'include/post.html' with post_type='list' form=form %}
+    {% endfor %}
+{% endblock %}

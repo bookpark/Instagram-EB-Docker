@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Upload Photo{% endblock %}
+{% block content %}
+<div>
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{% for field in form %}
+			<div class="form-group">
+				{{ field.label_tag }}
+				{{ field }}
+			</div>
+		{% endfor %}
+		<button class="btn btn-primary btn-block">업로드</button>
+	</form>
+</div>
+{% endblock %}
