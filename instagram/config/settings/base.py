@@ -19,10 +19,11 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Config paths
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
-f = open(os.path.join(CONFIG_SECRET_DIR, 'settings_common.json'))
-config_secret_common_str = f.read()
-f.close()
-config_secret_common = json.loads(config_secret_common_str)
+CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.json')
+CONFIG_SECRET_DEV_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_dev.json')
+CONFIG_SECRET_DEPLOY_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_deploy.json')
+
+config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
 
 # Static paths
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
