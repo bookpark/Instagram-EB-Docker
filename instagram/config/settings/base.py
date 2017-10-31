@@ -34,7 +34,7 @@ STATICFILES_DIRS = [
 ]
 
 # Media paths
-MEDIA_ROOT = os.path.join(ROOT_DIR, '..media')
+MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 MEDIA_URL = '/media/'
 
 # Others
