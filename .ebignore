@@ -1,5 +1,5 @@
 # .ebignore
-!.config_secret
+!.config_secret/
 
 # Custom
 .idea/
