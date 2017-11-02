@@ -1,10 +1,8 @@
-# .ebignore
-!.config_secret/
-
 # Custom
 .idea/
 .config_secret/
 .static_root/
+.media/
 
 # Created by https://www.gitignore.io/api/macos,python,django,pycharm
 
@@ -218,3 +216,6 @@ venv.bak/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# .ebignore
+!.config_secret/
