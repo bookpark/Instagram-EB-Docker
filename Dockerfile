@@ -23,6 +23,11 @@ RUN         ln -sf /etc/nginx/sites-available/app.conf \
 # uWSGI (-p는 디렉토리가 없으면 순서대로 생성 명령)
 RUN         mkdir -p /var/log/uwsgi/app
 
+# manage.py
+WORKDIR     /srv/app/instagram
+RUN         /root/.pyenv/versions/app/bin/python manage.py collectstatic --noinput
+RUN         /root/.pyenv/versions/app/bin/python manage.py migrate --noinput
+
 # supervisor
 RUN         cp /srv/app/.config/supervisor/* \
                 /etc/supervisor/conf.d/
