@@ -1,4 +1,4 @@
-FROM        base
+FROM        bookpark/base
 MAINTAINER  bkbkgg@gmail.com
 
 ENV         LANG C.UTF-8
