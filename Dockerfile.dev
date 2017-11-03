@@ -12,9 +12,9 @@ WORKDIR     /srv/app
 RUN         pyenv local app
 
 # Nginx
-RUN         cp /srv/app/.config/nginx/nginx.conf \
+RUN         cp /srv/app/.config/dev/nginx/nginx.conf \
                 /etc/nginx/nginx.conf
-RUN         cp /srv/app/.config/nginx/app.conf \
+RUN         cp /srv/app/.config/dev/nginx/app.conf \
                 /etc/nginx/sites-available/
 RUN         rm -rf /etc/nginx/sites-enabled/*
 RUN         ln -sf /etc/nginx/sites-available/app.conf \
@@ -29,7 +29,7 @@ RUN         /root/.pyenv/versions/app/bin/python manage.py collectstatic --noinp
 RUN         /root/.pyenv/versions/app/bin/python manage.py migrate --noinput
 
 # supervisor
-RUN         cp /srv/app/.config/supervisor/* \
+RUN         cp /srv/app/.config/dev/supervisor/* \
                 /etc/supervisor/conf.d/
 CMD         supervisord -n
 
