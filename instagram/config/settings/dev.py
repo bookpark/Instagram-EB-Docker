@@ -2,6 +2,13 @@ from .base import *
 
 config_secret = json.loads(open(CONFIG_SECRET_DEV_FILE).read())
 
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.elasticbeanstalk.com',
+    '.booki.kr',
+]
+
 # AWS
 AWS_ACCESS_KEY_ID = config_secret['aws']['access_key_id']
 AWS_SECRET_ACCESS_KEY = config_secret['aws']['secret_access_key']
