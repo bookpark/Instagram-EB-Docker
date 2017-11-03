@@ -43,6 +43,9 @@ class PostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
+        labels = {
+            'content': '',
+        }
         fields = (
             'content',
         )
