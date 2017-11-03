@@ -2,6 +2,7 @@ FROM        bookpark/base
 MAINTAINER  bkbkgg@gmail.com
 
 ENV         LANG C.UTF-8
+ENV         DJANG_SETTINGS_MODULE config.settings.dev
 
 # 파일 복사 및 requirements 설치
 COPY        . /srv/app
