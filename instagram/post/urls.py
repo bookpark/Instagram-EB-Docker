@@ -19,7 +19,7 @@ from post.views import post_list, post_upload, post_detail, post_delete, post_co
 
 urlpatterns = [
     url(r'^$', index, name='index'),
-    url(r'^posts$', post_list, name='post_list'),
+    url(r'^posts/$', post_list, name='post_list'),
     url(r'^posts/(?P<post_pk>\d+)/$', post_detail, name='post_detail'),
     url(r'^posts/upload/$', post_upload, name='post_upload'),
     url(r'^posts/(?P<post_pk>\d+)/comments/add/', post_comment, name='post_comment'),
