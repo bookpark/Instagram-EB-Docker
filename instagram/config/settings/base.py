@@ -13,6 +13,8 @@ import json
 import os
 
 # Paths
+import raven
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
@@ -38,6 +40,13 @@ MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 MEDIA_URL = '/media/'
 
 # Others
+RAVEN_CONFIG = {
+    'dsn': 'https://0721bf10a16e4823a7aa33774f89fa85:864e0bfef6494a6b9c32acf4300bbb8b@sentry.io/248303',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+}
+
 WSGI_APPLICATION = 'config.wsgi.application'
 
 INSTALLED_APPS = [
@@ -50,6 +59,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'storages',
+    'raven.contrib.django.raven_compat',
 
     'post',
     'member',

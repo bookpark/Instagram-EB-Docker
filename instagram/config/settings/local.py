@@ -34,6 +34,13 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': os.path.join(ROOT_DIR, '.log', 'django.log')
+        },
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+            'tags': {
+                'custom-tag': 'x'
+            },
         }
     },
     'loggers': {
@@ -41,6 +48,7 @@ LOGGING = {
             'handlers': [
                 'console',
                 'file',
+                'sentry',
             ],
             'level': 'DEBUG',
             'propagate': True,
